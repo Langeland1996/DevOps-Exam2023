@@ -12,6 +12,10 @@ Globals:
     MemorySize: 512
 
 Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.6
 
   Bucket:
     Type: AWS::S3::Bucket

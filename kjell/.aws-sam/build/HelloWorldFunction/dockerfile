@@ -1,0 +1,19 @@
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
+
+# Set the working directory to /kjell/hello_world
+WORKDIR /kjell/hello_world
+
+# Copy the current directory contents into the container at /kjell/hello_world
+COPY . /kjell/hello_world
+
+# Install any needed packages specified in requirements.txt
+RUN pipe install --no-cache-dir -r requirements.txt
+
+# Define environment variables
+ENV AWS_ACCESS_KEY_ID=""
+ENV AWS_SECRET_ACCESS_KEY=""
+ENV BUCKET_NAME=""
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]

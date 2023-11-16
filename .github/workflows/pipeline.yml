@@ -12,6 +12,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+        
+      name: Install SAM CLI
+      run: |
+        pip install aws-sam-cli
 
     - name: Set up AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -22,15 +31,6 @@ jobs:
 
     - name: Build and deploy SAM application
       run: |
-        sam build
-        sam deploy --stack-name kjell-sam-app --s3-bucket <your-s3-bucket-name> --capabilities CAPABILITY_IAM
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Build SAM application
-      run: sam build
+        cd kjell
+        sam build --use-container
+        sam deploy --stack-name kjell-sam-app --s3-bucket BUCKET_NAME --capabilities CAPABILITY_IAM
