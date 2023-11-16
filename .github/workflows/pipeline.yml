@@ -5,7 +5,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./sentiment-demo
+    working-directory: ./kjell
 
 jobs:
   build-deploy:
@@ -19,7 +19,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-          
-      - run: cd kjell    
+   
       - run: sam build --use-container
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name BUCKET_NAME --s3-bucket lambda-deployments-gb --capabilities CAPABILITY_IAM --region us-east-1
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name fr009 --s3-bucket lambda-deployments-gb --capabilities CAPABILITY_IAM --region us-east-1
