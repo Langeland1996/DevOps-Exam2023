@@ -12,7 +12,7 @@
 
 ## OPPGAVE 4
 [ ] Task A
-[ ] Task B
+[x] Task B
 
 ## OPPGAVE 5
 #A - Kontinuerlig Integrering
